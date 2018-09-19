@@ -33,7 +33,7 @@ class MediaAttachment < ApplicationRecord
 
   IMAGE_STYLES = {
     original: {
-      pixels: 1_638_400, # 1280x1280px
+      pixels: 16_777_216, # 4096x4096px
       file_geometry_parser: FastGeometryParser,
     },
 
@@ -65,15 +65,15 @@ class MediaAttachment < ApplicationRecord
         'vsync'    => 'cfr',
         'c:v'      => 'h264',
         'b:v'      => '500K',
-        'maxrate'  => '1300K',
-        'bufsize'  => '1300K',
+        'maxrate'  => '2000K',
+        'bufsize'  => '2000K',
         'crf'      => 18,
       },
     },
   }.freeze
 
-  IMAGE_LIMIT = 8.megabytes
-  VIDEO_LIMIT = 40.megabytes
+  IMAGE_LIMIT = 100.megabytes
+  VIDEO_LIMIT = 150.megabytes
 
   belongs_to :account, inverse_of: :media_attachments, optional: true
   belongs_to :status,  inverse_of: :media_attachments, optional: true
